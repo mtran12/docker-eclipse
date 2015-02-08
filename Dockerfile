@@ -15,6 +15,8 @@ RUN apt-get update \
  && apt-get install -y oracle-java8-set-default \
  \
  && curl "$DOWNLOAD_URL" | tar vxz -C $INSTALLATION_DIR \
+ && ls $INSTALLATION_DIR \
+ && ls $INSTALLATION_DIR/eclipse \
  && adduser --disabled-password --quiet --gecos '' eclipse \
  && chown -R root:eclipse $INSTALLATION_DIR/eclipse \
  %% chmod -R 775 $INSTALLATION_DIR/eclipse \
@@ -23,4 +25,4 @@ RUN apt-get update \
  && apt-get clean
 
 USER eclipse
-ENTRYPOINT /opt/eclipse/eclipse
+ENTRYPOINT INSTALLATION_DIR/eclipse/eclipse
