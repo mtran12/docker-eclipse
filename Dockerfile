@@ -17,7 +17,7 @@ RUN apt-get update \
  && curl "$DOWNLOAD_URL" | tar vxz -C $INSTALLATION_DIR \
  && adduser --disabled-password --quiet --gecos '' eclipse \
  && chown -R root:eclipse $INSTALLATION_DIR/eclipse \
- %% chmod -R 775 $INSTALLATION_DIR/eclipse \
+ && chmod -R 775 $INSTALLATION_DIR/eclipse \
  \
  && apt-get --purge autoremove -y software-properties-common curl \
  && apt-get clean
