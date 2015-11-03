@@ -19,8 +19,8 @@ RUN apt-get update \
  && apt-get clean
 
 # Download Eclipse
-ADD $DOWNLOAD_URL $INSTALLATION_DIR/
- 
+RUN curl "$DOWNLOAD_URL" | tar vxz -C $INSTALLATION_DIR
+
 RUN adduser --disabled-password --quiet --gecos '' eclipse
 RUN chown -R root:eclipse $INSTALLATION_DIR/eclipse
 RUN chmod -R 775 $INSTALLATION_DIR/eclipse
