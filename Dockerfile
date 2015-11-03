@@ -3,7 +3,7 @@ FROM ubuntu:latest
 MAINTAINER Sah Lee <contact@leesah.name>
 
 ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/luna/SR1a/eclipse-java-luna-SR1a-linux-gtk-x86_64.tar.gz
-ENV INSTALLATION_DIR /usr/local/ 
+ENV INSTALLATION_DIR /usr/local
 
 RUN apt-get update \
  && apt-get install -y software-properties-common curl \
@@ -12,7 +12,7 @@ RUN apt-get update \
  && apt-get update \
  && echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections \
  && echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections \
- && apt-get install -y oracle-java8-set-default \
+ && apt-get install -y oracle-java8-set-default libgtk2.0-0 libxtst6 \
  \
  && curl "$DOWNLOAD_URL" | tar vxz -C $INSTALLATION_DIR \
  && adduser --disabled-password --quiet --gecos '' eclipse \
@@ -23,4 +23,4 @@ RUN apt-get update \
  && apt-get clean
 
 USER eclipse
-ENTRYPOINT INSTALLATION_DIR/eclipse/eclipse
+ENTRYPOINT $INSTALLATION_DIR/eclipse/eclipse
