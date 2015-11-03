@@ -3,7 +3,7 @@ FROM ubuntu:trusty
 MAINTAINER Sah Lee <contact@leesah.name>
 
 ENV DOWNLOAD_URL http://download.eclipse.org/technology/epp/downloads/release/mars/1/eclipse-java-mars-1-linux-gtk-x86_64.tar.gz
-ENV INSTALLATION_DIR /usr/local/
+ENV INSTALLATION_DIR /usr/local
 
 # Eclipse requires Oracle JDK
 RUN apt-get update \
@@ -19,7 +19,7 @@ RUN apt-get update \
  && apt-get clean
 
 # Download Eclipse
-ADD "$DOWNLOAD_URL" $INSTALLATION_DIR
+ADD $DOWNLOAD_URL $INSTALLATION_DIR/
  
 RUN adduser --disabled-password --quiet --gecos '' eclipse
 RUN chown -R root:eclipse $INSTALLATION_DIR/eclipse
