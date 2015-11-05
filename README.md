@@ -4,15 +4,15 @@
 
 ## Usage
 
-This launches the latest version of Eclipse, with your `~/workspace` folder mounted to `~eclipse/workspace/` in the container.
-
 ```bash
 $ docker run -v ~/workspace/:/home/eclipse/workspace/ \
   -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
   -d leesah/eclipse
 ```
 
-To launch an earlier version of Eclipse, run with `leesah/eclipse:<version>`. For example:
+The above command line launches the latest version of Eclipse, with your `~/workspace` folder mounted to `~eclipse/workspace/` in the container.
+
+To launch an earlier version of Eclipse, simply run with `leesah/eclipse:<version>`. For example:
 
 ```bash
 $ docker run -v ~/workspace/:/home/eclipse/workspace/ \
